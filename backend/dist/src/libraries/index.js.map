@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/libraries/index.js"],"names":["default"],"mappings":";;;;;;;;;;;6CAASA,O;;;;;;;;;6CACAA,O","file":"index.js","sourcesContent":["export { default as createPassportLibrary } from './passport.lib'\nexport { default as createSendgridLibrary } from './sendgrid.lib'\n"]}
