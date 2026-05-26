@@ -1,0 +1,14 @@
+{
+  "apps" : [{
+    "name"        : "Glyph Server",
+    "script"      : "npm run dev",
+    "args"        : [],
+    "watch"       : true,
+    "node_args"   : "",
+    "merge_logs"  : true,
+    "cwd"         : "/Users/elimence/code/glyph/glyph-fullstack/backend",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+]}
