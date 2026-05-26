@@ -1,0 +1,34 @@
+{
+  "port": 5000,
+  "package-json": "../package.json",
+  "log": {
+    "level": "info"
+  },
+  "server": {
+    "apiBase": "http://localhost:5000/api/v1",
+    "secret": null,
+    "mdSecret": null,
+    "sendgridConfig": {
+      "from": "glyph@shh.mpg.de",
+      "apiKey": ""
+    },
+    "webBaseUrl": "http://localhost:3000",
+    "dbConfig": {
+      "db_name": "glyph_dev",
+      "dropScripts": false,
+      "seedData": false,
+      "uri": "mongodb://localhost/glyph_dev",
+      "options": {}
+    },
+    "adminUser": {
+      "email": "glyph@shh.mpg.de",
+      "password": "",
+      "username": "Glyph"
+    },
+    "ruleConfig": {
+      "minRuleCount": 20,
+      "bonusPointsPercentage": 10,
+      "minPercentageVariance": 0.3
+    }
+  }
+}

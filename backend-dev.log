@@ -1,0 +1,16 @@
+
+> glyph-backend@0.2.4 dev
+> babel-watch --watch config ./bin | bunyan
+
+[2026-05-20T08:48:48.637Z]  INFO: Glyph API/25021 on MacBook-Pro-de-Eliot.local: Initialize: Start
+[2026-05-20T08:48:48.639Z]  INFO: Glyph API/25021 on MacBook-Pro-de-Eliot.local: Initializing database ... (noop=true, service=database)
+[2026-05-20T08:48:48.639Z]  INFO: Glyph API/25021 on MacBook-Pro-de-Eliot.local: Connecting ............ (noop=true, service=database)
+API key does not start with "SG.".
+[2026-05-20T08:48:48.649Z]  INFO: Glyph API/25021 on MacBook-Pro-de-Eliot.local: On Start: App Started ! (noop=true)
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (/Users/cassidy/Downloads/github-archive/backend/node_modules/express/lib/application.js:618:24)
+    at /Users/cassidy/Downloads/github-archive/backend/bin/index.js:63:13
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # Glyph API Service Definition
+  backend:
+    build:
+      context: ./backend
+
+    image: glyph_api_img:2.0
+    container_name: glyph_api
+
+    restart: always
+    depends_on:
+      - database
+
+    ports:
+      - '5000:5000'
+
+    # Data Volumes
+    volumes:
+      - ./backend:/opt/glyph/backend
+
+    environment:
+      - ENVIRONMENT=production
+    
+    command: yarn prod
+
+
+  # Glyph Frontend Service Definition
+  # frontend:
+  #   build:
+  #     context: ./frontend
+
+  #   image: glyph_client_img:1.0
+  #   container_name: glyph_client
+
+  #   restart: always
+  #   depends_on:
+  #     - backend
+
+  #   ports:
+  #     - '5001:3000'
+
+  #   # Data Volumes
+  #   volumes:
+  #     - ./frontend:/opt/glyph/frontend
+
+  #   environment:
+  #     - ENVIRONMENT=dev
+
+  #   command: yarn start
+
+
+  # Database Container Service Definition
+  database:
+    image: mongo:4.2.8
+    container_name: glyph_database
+
+    restart: always
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+
+    ports:
+      - '127.0.0.1:27017:27017'
+
+    command: mongod
+
+
+# Named Volume Definitions
+volumes:
+  mongodb:
+  mongodb_config:
+
+# Networks
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+       - subnet: 172.30.10.0/24
