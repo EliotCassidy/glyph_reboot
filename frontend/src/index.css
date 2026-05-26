@@ -1,0 +1,123 @@
+:root {
+  --main-bg-color: #5a6bff;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
+
+body {
+  font-family: "Poppins", "Helvetica", sans-serif;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+iframe {
+  pointer-events: none !important;
+}
+
+@font-face {
+  font-family: "Afaka";
+  src: local("Afaka-Roman"), url("./fonts/Afaka-Roman.woff2") format("woff2"),
+    url("./fonts/Afaka-Roman.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Meetei Mayek";
+  src: url("./fonts/NotoSansMeeteiMayek.woff2") format("woff2"),
+    url("./fonts/NotoSansMeeteiMayek.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.afaka-font {
+  font-family: "Afaka", sans-serif;
+}
+
+.script-font {
+  font-family: "Noto Sans", "Afaka", "Noto Sans Osmanya", "Noto Sans Cherokee",
+    "Noto Sans Phoenician", "Noto Sans Ugaritic", "Noto Sans Runic",
+    "Noto Sans Meetei Mayek", "Noto Sans Buginese", "Noto Sans Batak",
+    "Noto Sans Gothic", "Noto Sans Sora Sompeng", "Noto Sans Lao",
+    "Noto Sans Tagbanwa", "Noto Sans Nabataean", "Noto Sans Adlam",
+    "Noto Sans Khudawadi", "Noto Sans Newa", "Noto Serif Nyiakeng Puachue Hmong",
+    "Noto Sans Avestan", "Noto Sans Soyombo", "Noto Sans Tai Viet",
+    "Noto Sans Warang Citi", "Noto Sans Bassa Vah", "Noto Sans Kayah Li",
+    "Noto Sans Mandaic", "Noto Sans Zanabazar Square", "Noto Sans Meroitic",
+    "Noto Sans Mro", "Noto Sans Old Permic", "Noto Sans Pahawh Hmong",
+    "Noto Sans Bamum", "Noto Sans Grantha", "Noto Sans Lepcha", "Noto Sans Miao",
+    "Noto Sans Mongolian", "Noto Sans New Tai Lue", "Noto Sans Ol Chiki",
+    "Noto Sans Shavian", "Noto Sans Multani", "Noto Sans Psalter Pahlavi",
+    "Noto Sans Syloti Nagri", "Noto Sans Linear B", "Noto Sans Pau Cin Hau",
+    "Noto Naskh Arabic";
+}
+
+.main-tutorial {
+  min-height: 70vh;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.aspect-ratio-1 {
+  aspect-ratio: 1;
+}
+
+.character {
+  box-shadow: 0 0 0 1px #000;
+  min-width: 4rem;
+  min-height: 4rem;
+}
+
+@media (min-width: 640px) {
+  .character {
+    box-shadow: 0 0 0 1px #000;
+    min-width: 6rem;
+    min-height: 6rem;
+  }
+}
+.character:hover {
+  box-shadow: 0 0 0 1px var(--main-bg-color);
+}
+
+.character[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px var(--main-bg-color);
+}
+
+.language-select {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='MuiSvgIcon-root' focusable='false' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath fill='white' d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z'%3E%3C/path%3E%3C/svg%3E")
+      left 0.5rem center no-repeat,
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")
+      right 0.5rem center no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+  color-adjust: exact;
+}
+
+.falling {
+  animation: fall 4s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}

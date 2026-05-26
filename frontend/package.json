@@ -1,0 +1,137 @@
+{
+  "name": "distinctiveness-react",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "https://api.glyph.shh.mpg.de",
+  "dependencies": {
+    "@craco/craco": "^6.2.0",
+    "@dnd-kit/core": "^4.0.0",
+    "@dnd-kit/sortable": "^5.0.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@sentry/react": "^6.12.0",
+    "@sentry/tracing": "^6.12.0",
+    "@tailwindcss/forms": "^0.3.3",
+    "date-fns": "^2.23.0",
+    "eslint-plugin-testing-library": "^4.12.0",
+    "html-entities": "^2.3.2",
+    "i18next": "^20.4.0",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "i18next-resources-to-backend": "^1.0.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.1",
+    "react-countdown": "^2.3.2",
+    "react-dnd": "^14.0.3",
+    "react-dnd-html5-backend": "^14.0.1",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.11.4",
+    "react-modal": "^3.14.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-tag-input": "^6.7.3",
+    "styled-components": "^5.3.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
+    "validator": "^13.6.0",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "lint": "eslint src",
+    "eject": "react-scripts eject",
+    "format": "prettier --parser typescript --list-different \"src/**/*.{js,jsx}\"",
+    "reformat": "eslint --fix \"src/**/*.{js,jsx}\"; prettier --parser typescript --write \"src/**/*.{js,jsx}\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:jsx-a11y/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "i18next",
+      "jsx-a11y"
+    ],
+    "rules": {
+      "i18next/no-literal-string": [
+        "warn",
+        {
+          "markupOnly": true,
+          "onlyAttribute": [
+            "label"
+          ]
+        }
+      ],
+      "import/newline-after-import": "error",
+      "import/no-unresolved": "off",
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          },
+          "groups": [
+            "builtin",
+            "external",
+            "internal"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "src/**",
+              "group": "external",
+              "position": "after"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "builtin"
+          ],
+          "newlines-between": "always"
+        }
+      ],
+      "no-console": "warn",
+      "react-hooks/exhaustive-deps": "error"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@testing-library/dom": "^8.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-i18next": "^5.1.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "postcss": "^7.0.35",
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.2"
+  }
+}
