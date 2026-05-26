@@ -1,4 +1,5 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { shuffle } from "lodash";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 
@@ -67,9 +68,24 @@ const RuleEditor = ({
   const [wizardStep, setWizardStep] = useState(0);
   const [firstStepError, setFirstStepError] = useState(null);
   const { t } = useTranslation();
+  const displayedIndices = useState(() => shuffle([...html.keys()]))[0];
+  const shuffledCharset = displayedIndices.map((index) => html[index]);
   const emptyRuleBinary = new Array(html.length).fill(0);
+  const toDisplayBinary = (originalBinary) =>
+    displayedIndices.map((index) => originalBinary[index]);
+  const toOriginalBinary = (displayBinary) => {
+    const originalBinary = new Array(html.length).fill(0);
+
+    displayBinary.forEach((value, displayIndex) => {
+      originalBinary[displayedIndices[displayIndex]] = value;
+    });
+
+    return originalBinary;
+  };
   const [ruleBinary, setRuleBinary] = useState(
-    initialValue?.ruleBinary || emptyRuleBinary,
+    initialValue?.ruleBinary
+      ? toDisplayBinary(initialValue.ruleBinary)
+      : emptyRuleBinary,
   );
   const [description, setDescription] = useState(
     initialValue?.description || "",
@@ -89,7 +105,7 @@ const RuleEditor = ({
 
   const ruleBinaryCharacters = ruleBinary.reduce((acc, item, index) => {
     if (item === 1) {
-      return [...acc, html[index]];
+      return [...acc, shuffledCharset[index]];
     }
     return acc;
   }, []);
@@ -125,8 +141,8 @@ const RuleEditor = ({
     setFirstStepError(null);
   };
 
-  const handleNextClick = useCallback(() => {
-    const ruleBinaryText = ruleBinary.join("");
+  const handleNextClick = () => {
+    const ruleBinaryText = toOriginalBinary(ruleBinary).join("");
     if (
       data &&
       data.find((rule) => rule._id !== id && rule.ruleBinary === ruleBinaryText)
@@ -139,7 +155,7 @@ const RuleEditor = ({
     } else {
       setWizardStep((prev) => prev + 1);
     }
-  }, [data, ruleBinary, t, id]);
+  };
 
   return (
     <div className="container mx-auto my-8 px-4">
@@ -160,7 +176,7 @@ const RuleEditor = ({
 
             <div className="char-selection">
               <CharsSelection
-                charset={html}
+                charset={shuffledCharset}
                 ruleBinary={ruleBinary}
                 updateSelected={(characterIndex) => {
                   onClickCharacter(characterIndex);
@@ -213,85 +229,88 @@ const RuleEditor = ({
                 </div>
               </div>
             </div>
-          </>
-        )}
-        {wizardStep === 1 && (
-          <>
-            <div className="rule-description-wrapper">
-              <p className="text-2xl pb-5">{t("Text description of rule")}</p>
-              <input
-                type="text"
-                id="description"
-                aria-label={t("Description")}
-                autoComplete="off"
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-                value={description}
-                name="description"
-                required={true}
-                ref={descriptionInputRef}
-                className="w-full px-8 py-5 text-2xl"
-              />
-              <p className="text-right">
-                {t("Characters_")}
-                <span className={descriptionTooLong ? "text-red-500 " : " "}>
-                  {description.length}
-                </span>
-                {t("/150")}
-              </p>
-
-              <p className="text-2xl pb-5">
-                {t("Selected characters")}
-                <button
-                  className="ml-8 text-primary hover:underline"
-                  type="button"
-                  onClick={() => setWizardStep(wizardStep - 1)}
-                >
-                  {t("Edit")}
-                </button>
-              </p>
-              <div className="flex flex-wrap mb-16">
-                {ruleBinaryCharacters.map((item) => (
-                  <Character
-                    key={item}
-                    isActive="true"
-                    item={item}
-                    disabled={true}
-                    scriptName={scriptName}
-                  />
-                ))}
-              </div>
-
-              {descriptionTooLong && (
-                <p className="text-red-500 text-center my-2">
-                  {t("Your description exceeds the 150 character limit.")}
-                </p>
-              )}
-              {error && (
-                <p className="text-red-500 text-center my-2">{error}</p>
-              )}
-
-              <p className="text-center my-2">
-                {t("This rule is worth X points", { count: potentialScore })}
-              </p>
-            </div>
-            <div className="flex items-center justify-center my-2">
-              <div>
-                <PrimaryButton
-                  type="submit"
-                  className="my-2"
-                  onClick={() => {
-                    onSubmit({ description, ruleBinary });
+            </>
+          )}
+          {wizardStep === 1 && (
+            <>
+              <div className="rule-description-wrapper">
+                <p className="text-2xl pb-5">{t("Text description of rule")}</p>
+                <input
+                  type="text"
+                  id="description"
+                  aria-label={t("Description")}
+                  autoComplete="off"
+                  onChange={(e) => {
+                    setDescription(e.target.value);
                   }}
-                  disabled={description === "" || descriptionTooLong}
-                >
-                  {t("Finish Rule")}
-                </PrimaryButton>
+                  value={description}
+                  name="description"
+                  required={true}
+                  ref={descriptionInputRef}
+                  className="w-full px-8 py-5 text-2xl"
+                />
+                <p className="text-right">
+                  {t("Characters_")}
+                  <span className={descriptionTooLong ? "text-red-500 " : " "}>
+                    {description.length}
+                  </span>
+                  {t("/150")}
+                </p>
+
+                <p className="text-2xl pb-5">
+                  {t("Selected characters")}
+                  <button
+                    className="ml-8 text-primary hover:underline"
+                    type="button"
+                    onClick={() => setWizardStep(wizardStep - 1)}
+                  >
+                    {t("Edit")}
+                  </button>
+                </p>
+                <div className="flex flex-wrap mb-16">
+                  {ruleBinaryCharacters.map((item) => (
+                    <Character
+                      key={item}
+                      isActive="true"
+                      item={item}
+                      disabled={true}
+                      scriptName={scriptName}
+                    />
+                  ))}
+                </div>
+
+                {descriptionTooLong && (
+                  <p className="text-red-500 text-center my-2">
+                    {t("Your description exceeds the 150 character limit.")}
+                  </p>
+                )}
+                {error && (
+                  <p className="text-red-500 text-center my-2">{error}</p>
+                )}
+
+                <p className="text-center my-2">
+                  {t("This rule is worth X points", { count: potentialScore })}
+                </p>
               </div>
-            </div>
-          </>
-        )}
+              <div className="flex items-center justify-center my-2">
+                <div>
+                  <PrimaryButton
+                    type="submit"
+                    className="my-2"
+                    onClick={() => {
+                      onSubmit({
+                        description,
+                        ruleBinary: toOriginalBinary(ruleBinary),
+                      });
+                    }}
+                    disabled={description === "" || descriptionTooLong}
+                  >
+                    {t("Finish Rule")}
+                  </PrimaryButton>
+                </div>
+              </div>
+            </>
+          )}
       </form>
     </div>
   );
