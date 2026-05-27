@@ -75,6 +75,28 @@ export class RulesService {
   }
 
 
+  async getPublicById({ ruleId }) {
+    this.log.info('get public by id', { ruleId })
+    try {
+      const rule = await this.RulesModel
+        .findById(ruleId)
+        .populate('user', 'username')
+        .populate('script', 'name html')
+        .exec()
+      ;
+
+      if (rule === null || rule.remainingAttempts > 0) {
+        throw notFound(`rule with id ${ruleId} was not found`)
+      }
+
+      return rule
+    } catch (e) {
+      this.log.error(e)
+      throw e
+    }
+  }
+
+
   async testRule({ userId, ruleId, testBinary }) {
     try {
       const rule = await this.getById({ userId, ruleId })

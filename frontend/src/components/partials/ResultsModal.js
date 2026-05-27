@@ -1,4 +1,5 @@
 import CloseIcon from "@material-ui/icons/Close";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 
@@ -10,6 +11,7 @@ import {
   TertiaryButton,
   SecondaryButton,
 } from "../shared";
+import { RuleShareActions } from "./RuleShareActions";
 
 Modal.setAppElement("#root");
 
@@ -19,6 +21,13 @@ function ResultsModal({ isOpen, rule, closeModal }) {
   const bubbles = winBubbles();
 
   const hasWon = rule?.points > 0;
+  const shareUrl = useMemo(() => {
+    if (!rule?._id || typeof window === "undefined") {
+      return "";
+    }
+
+    return `${window.location.origin}/share/${rule._id}`;
+  }, [rule?._id]);
 
   return (
     <Modal
@@ -63,6 +72,9 @@ function ResultsModal({ isOpen, rule, closeModal }) {
                 <h1 className="text-5xl my-4 text-center">
                   {t("You earned X points", { count: rule.points })}
                 </h1>
+                <div className="w-full max-w-2xl my-4">
+                  <RuleShareActions rule={rule} shareUrl={shareUrl} />
+                </div>
                 <div className="mx-2">
                   <PrimaryButton onClick={() => closeModal(false)}>
                     {t("Continue")}

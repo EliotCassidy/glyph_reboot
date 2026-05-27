@@ -12,6 +12,7 @@ export { default as LeaderboardPoints } from "./LeaderboardPoints";
 export { default as LocalDash } from "./LocalDash";
 export { default as NotFound } from "./NotFound";
 export { default as PromoVideo } from "./PromoVideo";
+export { default as RuleShare } from "./RuleShare";
 export { default as ResetPassword } from "./ResetPassword";
 export { default as Signin } from "./Signin";
 export { default as Signup } from "./Signup";

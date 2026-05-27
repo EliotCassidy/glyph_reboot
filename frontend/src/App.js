@@ -29,6 +29,7 @@ import {
   TestRule,
   PromoVideo,
 } from "./pages";
+import RuleShare from "./pages/RuleShare";
 import { UserContextProvider } from "./UserContext";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
                         path="/forgotPassword"
                         component={ForgotPassword}
                       />
+                      <Route path="/share/:ruleId" component={RuleShare} />
                       <Route
                         path="/terms-and-conditions"
                         component={TermsAndConditions}

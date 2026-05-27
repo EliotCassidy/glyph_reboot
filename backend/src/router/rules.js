@@ -11,6 +11,18 @@ export default ({
   const router = Router({ mergeParams: true })
   router.use(bodyParser.json())
 
+  router.get('/public/:ruleId', async (req, res, next) => {
+    try {
+      const { ruleId } = req.params
+      const rule = await rulesService.getPublicById({ ruleId })
+
+      res.json({ rule })
+    } catch (e) {
+      log.error(e)
+      next(e)
+    }
+  })
+
   router.get('/all', authMiddleware.isAuthenticated(), async (req, res, next) => {
     try {
       const rules = await rulesService.getAllRules ()
