@@ -287,4 +287,8 @@
   "Try to beat my result.": "Provi a battere il mio risultato.",
   "This rule was the first matching rule proposed for this script.": "Questa regola è stata la prima regola corrispondente proposta per questo script.",
   "This rule matched, but it was not the first discovered version.": "Questa regola corrispondeva, ma non era la prima versione scoperta."
+  ,
+  "Credits": "Crediti",
+  "Glyph was developed by the authors and contributors listed below.": "Glyph è stato sviluppato dagli autori e dai contributori elencati di seguito.",
+  "Contact": "Contatti"
 }

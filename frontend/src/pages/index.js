@@ -18,4 +18,5 @@ export { default as Signin } from "./Signin";
 export { default as Signup } from "./Signup";
 export { default as ScienceBehindGlyphVideo } from "./ScienceBehindGlyphVideo";
 export { default as TermsAndConditions } from "./TermsAndConditions";
+export { default as Credits } from "./Credits";
 export { default as TestRule } from "./TestRule";

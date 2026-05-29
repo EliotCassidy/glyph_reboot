@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import CNRSLogo from "../../assets/CNRS_logo.svg";
 import MPILogo from "../../assets/MPI_logo.svg";
-import PSLScriptaLogo from "../../assets/PSL_Scripta_logo.png";
+import PSLCultureLabLogo from "../../assets/PSL_CultureLab_logo.svg";
 import TwitterLogo from "../../assets/twitter.svg";
 import { AuthContext } from "../../AuthContext";
 import LanguageSelector from "./LanguageSelector";
@@ -18,33 +19,51 @@ const Footer = () => {
     <footer>
       <div className="text-white py-4 sm:py-8 bg-primary">
         <div className="container mx-auto px-4">
-          <div className="justify-between flex flex-col md:flex-row items-center">
-            <a
-              href="https://www.shh.mpg.de/94549/themintgroup"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center mr-8 justify-start"
-            >
-              <img
-                className="my-2 sm:my-4 "
-                src={MPILogo}
-                alt="Max Plank Logo"
-                width="500"
-              />
-            </a>
-            <a
-              href="https://scripta.psl.eu/"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-start"
-            >
-              <img
-                src={PSLScriptaLogo}
-                className="my-2 sm:my-4"
-                alt="PSL Scripta logo"
-                height="65"
-              />
-            </a>
+          <div className="grid w-full grid-cols-[auto_auto_1fr] items-start gap-x-8 overflow-hidden">
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.cnrs.fr/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center"
+              >
+                <img
+                  className="block h-20 w-auto object-contain md:h-24"
+                  src={CNRSLogo}
+                  alt="CNRS logo"
+                />
+              </a>
+
+              <a
+                href="https://www.mpg.de/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center"
+              >
+                <img
+                  className="block h-20 w-auto object-contain md:h-24"
+                  src={MPILogo}
+                  alt="Max Planck Society logo"
+                />
+              </a>
+            </div>
+
+            <div />
+
+            <div className="flex justify-end pr-0 md:pr-4 -mt-10 md:-mt-16">
+              <a
+                href="https://psl.eu/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-start justify-end"
+              >
+                <img
+                  src={PSLCultureLabLogo}
+                  className="block h-56 w-auto object-contain object-top md:h-64"
+                  alt="PSL CultureLab logo"
+                />
+              </a>
+            </div>
           </div>
           <div className="mr-4 my-4">
             {authenticated ? <SignedinLinks /> : <SignedoutLinks />}
@@ -65,13 +84,13 @@ const Footer = () => {
           <div className="my-4">
             <p>{t("Questions?")}</p>
             <p>
-              {t("Email us at")}{" "}
+              {t("Email us at")} {" "}
               <a
                 className="text-white font-bold hover:underline"
-                href="mailto:glyph@shh.mpg.de"
+                href="mailto:glyph.science@proton.me"
               >
                 {/* eslint-disable i18next/no-literal-string */}
-                glyph@shh.mpg.de
+                glyph.science@proton.me
                 {/* eslint-enable */}
               </a>
             </p>
@@ -88,12 +107,17 @@ const Footer = () => {
                 {t("Data privacy statement")}
               </Link>
             </div>
-            <div>
+            <div className="mr-4">
               <Link
                 className="text-white  hover:underline"
                 to="/terms-and-conditions"
               >
                 {t("Terms and Conditions")}
+              </Link>
+            </div>
+            <div>
+              <Link className="text-white  hover:underline" to="/credits">
+                {t("Credits")}
               </Link>
             </div>
           </div>

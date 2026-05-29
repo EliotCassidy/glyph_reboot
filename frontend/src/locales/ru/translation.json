@@ -300,4 +300,8 @@
   "Try to beat my result.": "Попробуйте превзойти мой результат.",
   "This rule was the first matching rule proposed for this script.": "Это правило было первым подходящим правилом, предложенным для этого письма.",
   "This rule matched, but it was not the first discovered version.": "Это правило подошло, но оно не было первой обнаруженной версией."
+  ,
+  "Credits": "Авторы",
+  "Glyph was developed by the authors and contributors listed below.": "Glyph был разработан авторами и участниками, перечисленными ниже.",
+  "Contact": "Контакт"
 }

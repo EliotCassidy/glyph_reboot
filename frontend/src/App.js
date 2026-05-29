@@ -23,6 +23,7 @@ import {
   ForgotPassword,
   TermsAndConditions,
   DataPrivacyStatement,
+  Credits,
   CreateRule,
   ScienceBehindGlyphVideo,
   Admin,
@@ -84,6 +85,7 @@ function App() {
                         path="/terms-and-conditions"
                         component={TermsAndConditions}
                       />
+                      <Route path="/credits" component={Credits} />
                       <Route
                         path="/data-privacy-statement"
                         component={DataPrivacyStatement}

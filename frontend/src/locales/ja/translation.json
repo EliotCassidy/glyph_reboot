@@ -233,4 +233,8 @@
   "Try to beat my result.": "この結果を超えてみてください。",
   "This rule was the first matching rule proposed for this script.": "このルールは、この文字体系に対して提案された最初の一致ルールでした。",
   "This rule matched, but it was not the first discovered version.": "このルールは一致しましたが、最初に発見された版ではありませんでした。"
+  ,
+  "Credits": "クレジット",
+  "Glyph was developed by the authors and contributors listed below.": "Glyphは以下に記載された著者と貢献者によって開発されました。",
+  "Contact": "連絡先"
 }

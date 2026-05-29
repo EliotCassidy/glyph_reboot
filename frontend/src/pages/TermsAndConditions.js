@@ -21,7 +21,7 @@ function TermsAndConditions() {
           )}
           :
         </p>
-        <ol className="list-decimal browser-default list-inside">
+          <ol className="list-decimal browser-default list-inside">
           <li className="my-4">
             {t(
               "I understand that my participation is voluntary and that I am free to withdraw at any time during the game, without giving any reason, and without any adverse consequences.",
@@ -34,24 +34,19 @@ function TermsAndConditions() {
           </li>
           <li className="my-4">
             {t(
-              "I understand that this project has been reviewed by, and received ethics clearance through Friedrich Schiller University Jena.",
-            )}
-          </li>
-          <li className="my-4">
-            {t(
               "I understand that the data will be used for publication in scientific journals as well as presentations at conferences.",
             )}
           </li>
           <li className="my-4">
             {t(
               "I understand that I can raise a concern or make a complaint by sending an email to",
-            )}{" "}
+            )} {" "}
             <a
               className="text-primary hover:underline"
-              href="mailto:glyph@shh.mpg.de"
+              href="mailto:glyph.science@proton.me"
             >
               {/* eslint-disable i18next/no-literal-string */}
-              glyph@shh.mpg.de
+              glyph.science@proton.me
               {/* eslint-enable */}
             </a>
           </li>
