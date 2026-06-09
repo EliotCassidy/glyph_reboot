@@ -34,11 +34,6 @@ function TermsAndConditions() {
           </li>
           <li className="my-4">
             {t(
-              "I understand that this project has been reviewed by, and received ethics clearance through Friedrich Schiller University Jena.",
-            )}
-          </li>
-          <li className="my-4">
-            {t(
               "I understand that the data will be used for publication in scientific journals as well as presentations at conferences.",
             )}
           </li>
@@ -48,10 +43,10 @@ function TermsAndConditions() {
             )}{" "}
             <a
               className="text-primary hover:underline"
-              href="mailto:glyph@shh.mpg.de"
+              href="mailto:glyph.science@proton.me"
             >
               {/* eslint-disable i18next/no-literal-string */}
-              glyph@shh.mpg.de
+              glyph.science@proton.me
               {/* eslint-enable */}
             </a>
           </li>

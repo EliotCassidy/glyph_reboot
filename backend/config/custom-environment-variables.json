@@ -8,7 +8,7 @@
     "secret": "SECRET",
     "mdSecret": "MD_SECRET",
     "sendgridConfig": {
-      "from": "glyph@shh.mpg.de",
+      "from": "glyph.science@proton.me",
       "apiKey": ""
     },
     "webBaseUrl": "WEB_BASE_URL",

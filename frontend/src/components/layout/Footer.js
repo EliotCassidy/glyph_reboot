@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import BlueskyLogo from "../../assets/bluesky.svg";
 import MPILogo from "../../assets/MPI_logo.svg";
 import PSLScriptaLogo from "../../assets/PSL_Scripta_logo.png";
 import TwitterLogo from "../../assets/twitter.svg";
@@ -51,7 +52,7 @@ const Footer = () => {
           </div>
           <div className="my-8">
             <a
-              href="https://twitter.com/GlyphMPI"
+              href="https://bsky.app/profile/glyph-cl.bsky.social"
               target="_blank"
               rel="noreferrer"
               className="flex hover:underline text-white font-bold"
@@ -59,7 +60,7 @@ const Footer = () => {
               {/* eslint-disable i18next/no-literal-string */}
               @GlyphMPI
               {/* eslint-enable */}{" "}
-              <img className="mx-4" src={TwitterLogo} alt="twitter logo" />
+              <img className="mx-4 h-6" src={BlueskyLogo} alt="bluesky logo" />
             </a>
           </div>
           <div className="my-4">
@@ -68,10 +69,10 @@ const Footer = () => {
               {t("Email us at")}{" "}
               <a
                 className="text-white font-bold hover:underline"
-                href="mailto:glyph@shh.mpg.de"
+                href="mailto:glyph.science@proton.me"
               >
                 {/* eslint-disable i18next/no-literal-string */}
-                glyph@shh.mpg.de
+                glyph.science@proton.me
                 {/* eslint-enable */}
               </a>
             </p>

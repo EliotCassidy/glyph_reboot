@@ -9,7 +9,7 @@
     "secret": null,
     "mdSecret": null,
     "sendgridConfig": {
-      "from": "glyph@shh.mpg.de",
+      "from": "glyph.science@proton.me",
       "apiKey": ""
     },
     "webBaseUrl": "http://localhost:3000",
@@ -21,7 +21,7 @@
       "options": {}
     },
     "adminUser": {
-      "email": "glyph@shh.mpg.de",
+      "email": "glyph.science@proton.me",
       "password": "",
       "username": "Glyph"
     },
